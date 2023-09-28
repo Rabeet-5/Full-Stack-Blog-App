@@ -2,20 +2,26 @@ import React from "react";
 import styles from "./singlepage.module.css";
 import Menu from "@/components/menu/Menu";
 import Image from "next/image";
+import Comments from "@/components/comments/Comments";
 
 const SinglePage = () => {
   return (
     <div className={styles.container}>
       <div className={styles.infoContainer}>
         <div className={styles.textContainer}>
-          <h1>React Js Coding</h1>
+          <h1>React Js Coding kdsjfaklsajkds</h1>
           <div className={styles.user}>
             <div className={styles.userImageContainer}>
-              <Image src="/p1.jpeg" alt="postImage" fill className={styles.image} />
+              <Image
+                src="/p1.jpeg"
+                alt="postImage"
+                fill
+                className={styles.avatar}
+              />
             </div>
             <div className={styles.userTextContainer}>
-                <span className={styles.username}>Rabeet sati</span>
-                <span className={styles.date}>25-09-2023</span>
+              <span className={styles.username}>Rabeet sati</span>
+              <span className={styles.date}>25-09-2023</span>
             </div>
           </div>
         </div>
@@ -25,7 +31,32 @@ const SinglePage = () => {
       </div>
 
       <div className={styles.content}>
-        <div className={styles.post}></div>
+        <div className={styles.post}>
+          <div className={styles.description}>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Necessitatibus dolores nesciunt harum dicta consequatur corrupti,
+              sint totam fugiat impedit reprehenderit cupiditate quaerat
+              dignissimos odio at iure, id culpa possimus recusandae?
+            </p>
+            <h2>dkfkdlfkld</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Necessitatibus dolores nesciunt harum dicta consequatur corrupti,
+              sint totam fugiat impedit reprehenderit cupiditate quaerat
+              dignissimos odio at iure, id culpa possimus recusandae?
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Necessitatibus dolores nesciunt harum dicta consequatur corrupti,
+              sint totam fugiat impedit reprehenderit cupiditate quaerat
+              dignissimos odio at iure, id culpa possimus recusandae?
+            </p>
+          </div>
+          <div className={styles.comment}>
+            <Comments />
+          </div>
+        </div>
         <Menu />
       </div>
     </div>
