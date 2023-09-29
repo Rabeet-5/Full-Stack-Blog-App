@@ -2,9 +2,10 @@
 import React, { useState } from "react";
 import styles from "./auth.module.css";
 import Link from "next/link";
+import { signOut } from "next-auth/react";
 
 const AuthLinks = () => {
-  const status = "notauthenticated";
+  const status = "authenticated";
   const [open, setOpen] = useState(false);
 
   return (
@@ -14,7 +15,7 @@ const AuthLinks = () => {
       ) : (
         <>
           <Link href={"/write"} className={styles.link}>write</Link>
-          <span className="link">Logout</span>
+          <span className={styles.link} onClick={signOut}>Logout</span>
         </>
       )}
 
@@ -34,7 +35,7 @@ const AuthLinks = () => {
           ) : (
             <>
               <Link href="/write">Write</Link>
-              <span className={styles.link}>Logout</span>
+              <span className={styles.link} >Logout</span>
             </>
           )}
         </div>
