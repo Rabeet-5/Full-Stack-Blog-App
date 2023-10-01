@@ -20,7 +20,7 @@ const fetcher = async (url) => {
 };
 
 const Comments = ({ postSlug }) => {
-  const status = useSession();
+  const {status} = useSession();
   console.log(postSlug);
   const { data, isLoading } = useSWR(
     `http://localhost:3000/api/comment?postSlug=${postSlug}`,
@@ -44,7 +44,7 @@ const Comments = ({ postSlug }) => {
           : data?.map((item) => (
               <div className={styles.comment} key={item._id}>
                 <div className={styles.user}>
-                  {item?.user?.image && <Image
+                  {item.user.image && <Image
                     src={item.user.image}
                     alt="post"
                     width={50}
