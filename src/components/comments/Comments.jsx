@@ -21,7 +21,7 @@ const fetcher = async (url) => {
 
 const Comments = ({ postSlug }) => {
   const { status } = useSession();
-  console.log(postSlug);
+
   const { data, mutate, isLoading } = useSWR(
     `http://localhost:3000/api/comment?postSlug=${postSlug}`,
     fetcher
@@ -33,7 +33,7 @@ const Comments = ({ postSlug }) => {
       method: "POST",
       body: JSON.stringify({ desc, postSlug }),
     });
-    mutate()
+    mutate();
   };
 
   return (
