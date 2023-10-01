@@ -21,8 +21,9 @@ const fetcher = async (url) => {
 
 const Comments = ({ postSlug }) => {
   const status = useSession();
+  console.log(postSlug);
   const { data, isLoading } = useSWR(
-    `http://localhost:3000/api/comments?postSlug=${postSlug}`,
+    `http://localhost:3000/api/comment?postSlug=${postSlug}`,
     fetcher
   );
 
