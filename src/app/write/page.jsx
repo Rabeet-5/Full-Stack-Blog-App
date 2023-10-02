@@ -3,7 +3,6 @@ import React, { useEffect } from "react";
 import styles from "./write.module.css";
 import Image from "next/image";
 import { useState } from "react";
-import ReactQuill from "react-quill";
 import "react-quill/dist/quill.bubble.css";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -15,12 +14,14 @@ import {
 } from "firebase/storage";
 import { app } from "@/utils/firebase";
 import toast, { Toaster } from "react-hot-toast";
+import dynamic from "next/dynamic";
 
 const storage = getStorage(app);
 
 const Write = () => {
   const { status } = useSession();
   const router = useRouter();
+  const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
   const [open, setOpen] = useState(false);
   const [file, setFile] = useState(null);
@@ -66,7 +67,7 @@ const Write = () => {
     return <div className={styles.loading}>loading....</div>;
   }
   if (status === "unauthenticated") {
-    toast.error('Please login to write a blog ')
+    toast.error("Please login to write a blog ");
     router.push("/login");
   }
 
@@ -79,19 +80,19 @@ const Write = () => {
       .replace(/^-+|-+$/g, "");
 
   const handleSubmit = async () => {
-    const response = await fetch('/api/posts',{
-      method:"POST",
-      body:JSON.stringify({
+    const response = await fetch("/api/posts", {
+      method: "POST",
+      body: JSON.stringify({
         title,
-        desc:value,
-        img:media,
-        slug:slugify(title),
-        catSlug:"coding"
-      })
-    })
-    toast.success('Blog Posted Successfully !')
+        desc: value,
+        img: media,
+        slug: slugify(title),
+        catSlug: "coding",
+      }),
+    });
+    toast.success("Blog Posted Successfully !");
     console.log(response);
-  }
+  };
 
   return (
     <div className={styles.container}>
@@ -134,7 +135,9 @@ const Write = () => {
           placeholder="Tell Your Story ..."
         />
       </div>
-      <button className={styles.publish} onClick={handleSubmit} >Publish</button>
+      <button className={styles.publish} onClick={handleSubmit}>
+        Publish
+      </button>
       <Toaster />
     </div>
   );
