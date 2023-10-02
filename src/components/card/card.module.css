@@ -38,6 +38,11 @@
   color: var(--softTextColor);
 }
 
+/* .cardDescription {
+  background-color: rgb(68, 70, 84);
+  color: #fff; /* Set your desired text color */
+/* } */ 
+
 .link {
   border-bottom: 1px solid crimson;
   width: max-content;

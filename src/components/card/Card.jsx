@@ -8,12 +8,7 @@ const Card = ({ key, item }) => {
     <div className={styles.container} key={key}>
       {item.img && (
         <div className={styles.imageContainer}>
-          <Image
-            src={item.img}
-            alt="postImage"
-            fill
-            className={styles.image}
-          />
+          <Image src={item.img} alt="postImage" fill className={styles.image} />
         </div>
       )}
       <div className={styles.textContainer}>
@@ -26,7 +21,9 @@ const Card = ({ key, item }) => {
         <Link href={`/posts/${item.slug}`}>
           <h1>{item.title}</h1>{" "}
         </Link>
-        <p className={styles.desc}>{item.desc.substring(0, 60)}</p>
+        {/* <p className={`${styles.desc} ${styles.cardDescription}`}>
+          {item.desc.substring(0, 60)}
+        </p> */}
         <Link href={`/posts/${item.slug}`} className={styles.link}>
           Read more
         </Link>

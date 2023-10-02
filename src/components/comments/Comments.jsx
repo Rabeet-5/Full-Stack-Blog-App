@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import useSWR from "swr";
 import { useSession } from "next-auth/react";
+import toast, { Toaster } from "react-hot-toast";
 
 const fetcher = async (url) => {
   const res = await fetch(url);
@@ -34,6 +35,7 @@ const Comments = ({ postSlug }) => {
       body: JSON.stringify({ desc, postSlug }),
     });
     mutate();
+    toast.success('Comment added Successfully !')
   };
 
   return (
@@ -57,7 +59,7 @@ const Comments = ({ postSlug }) => {
         {isLoading
           ? "loading ... "
           : data?.map((item) => (
-              <div className={styles.comment} key={item._id}>
+              <div className={styles.comment} key={item}>
                 <div className={styles.user}>
                   {item.user.image && (
                     <Image
@@ -77,6 +79,7 @@ const Comments = ({ postSlug }) => {
               </div>
             ))}
       </div>
+      <Toaster />
     </div>
   );
 };

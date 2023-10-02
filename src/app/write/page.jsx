@@ -14,6 +14,7 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import { app } from "@/utils/firebase";
+import toast, { Toaster } from "react-hot-toast";
 
 const storage = getStorage(app);
 
@@ -39,13 +40,13 @@ const Write = () => {
         (snapshot) => {
           const progress =
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          console.log("Upload is " + progress + "% done");
+          // console.log("Upload is " + progress + "% done");
           switch (snapshot.state) {
             case "paused":
-              console.log("Upload is paused");
+              // console.log("Upload is paused");
               break;
             case "running":
-              console.log("Upload is running");
+              // console.log("Upload is running");
               break;
           }
         },
@@ -65,6 +66,7 @@ const Write = () => {
     return <div className={styles.loading}>loading....</div>;
   }
   if (status === "unauthenticated") {
+    toast.error('Please login to write a blog ')
     router.push("/login");
   }
 
@@ -87,6 +89,7 @@ const Write = () => {
         catSlug:"coding"
       })
     })
+    toast.success('Blog Posted Successfully !')
     console.log(response);
   }
 
@@ -132,6 +135,7 @@ const Write = () => {
         />
       </div>
       <button className={styles.publish} onClick={handleSubmit} >Publish</button>
+      <Toaster />
     </div>
   );
 };
