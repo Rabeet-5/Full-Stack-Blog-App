@@ -60,6 +60,11 @@
   
   .textArea {
     width: 100%;
+    height: 50%;
+    padding: 5px;
+    vertical-align: top;
+    font-size: 18px;
+    border: none;
   }
   
   .publish{

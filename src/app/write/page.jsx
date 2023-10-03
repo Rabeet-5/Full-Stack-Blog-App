@@ -51,7 +51,9 @@ const Write = () => {
               break;
           }
         },
-        (error) => {},
+        (error) => {
+          console.log(error);
+        },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
             setMedia(downloadURL);
@@ -119,20 +121,16 @@ const Write = () => {
                 <Image src="/image.png" alt="" width={16} height={16} />
               </label>
             </button>
-            <button className={styles.addButton}>
-              <Image src="/external.png" alt="" width={16} height={16} />
-            </button>
-            <button className={styles.addButton}>
-              <Image src="/video.png" alt="" width={16} height={16} />
-            </button>
           </div>
         )}
-        <ReactQuill
+        <textarea
+          name=""
+          placeholder="Tell your story ..."
           className={styles.textArea}
-          theme="bubble"
           value={value}
-          onChange={setValue}
-          placeholder="Tell Your Story ..."
+          onChange={(e) => setValue(e.target.value)}
+          rows="4" 
+          cols="50"
         />
       </div>
       <button className={styles.publish} onClick={handleSubmit}>
